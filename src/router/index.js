@@ -5,7 +5,7 @@ import NotebookList from '@/components/NotebookList'
 import NoteDetail from '@/components/NoteDetail'
 import TrashDetail from '@/components/TrashDetail'
 import Notfound from '@/components/Notfound'
-import Sidebar from '@/components/Sidebar'
+
 
 
 Vue.use(Router)
