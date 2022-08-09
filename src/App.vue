@@ -51,7 +51,6 @@ ul, li{
   border: none;
   cursor: pointer;
   display: inline-block;
-  border:1px solid red;
 
 }
 
