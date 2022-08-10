@@ -35,6 +35,8 @@
 
 <script>
 import Auth from '@/apis/auth'
+import Notebooks from '@/apis/notebooks'
+window.Notebooks=Notebooks
 export default {
   name: 'NotebookList',
   data () {
