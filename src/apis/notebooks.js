@@ -1,4 +1,5 @@
 import request from '@/helpers/request'
+import { friendlyDate } from '../helpers/until'
 const URL = {
     GET: '/notebooks',
     ADD: '/notebooks',
@@ -7,7 +8,18 @@ const URL = {
 }
 export default {
     getAll() {
-        return request(URL.GET)
+        return new Promise((resolve, reject) => {
+            request(URL.GET).then(res => {
+                console.log(res);
+                res.data = res.data.sort((item1, item2) => item1.updatedAt < item2.updatedAt ? 1 : -1)
+                res.data.forEach(item => {
+                    item.friendlyUpdatedAt = friendlyDate(item.updatedAt)
+                });
+                resolve(res)
+            }).catch(err => {
+                reject(err)
+            })
+        })
     },
     updateNotebook(notebookId, { title = '' } = { title: '' }) {
         return request(URL.UPDATE.replace(':id', notebookId), 'PATCH', { title })
