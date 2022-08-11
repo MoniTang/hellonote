@@ -19,10 +19,10 @@ export default{
     methods:{
         logout(){
             Auth.logout().then(data=>{
-                this.$router.push({path:'/Login'})            })
+                this.$router.push({path:'/Login'})           
+             })
         }
     }
-  
 }
 </script>
 <style lang="less" scoped>
