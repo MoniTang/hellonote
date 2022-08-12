@@ -7,7 +7,7 @@
       <div class="layout">
         <h3>笔记本列表{{notebooks.length}}</h3>
         <div class="book-list">
-          <router-link v-for="item in notebooks" :key="item.id" to="/note/1" class="notebook">
+          <router-link v-for="item in notebooks" :key="item.id" :to="`/note?notebookId=${item.id}`" class="notebook">
             <div>
               <span class="iconfont icon-notebook"></span>
               {{item.title}}

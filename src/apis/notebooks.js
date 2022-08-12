@@ -10,7 +10,6 @@ export default {
     getAll() {
         return new Promise((resolve, reject) => {
             request(URL.GET).then(res => {
-                console.log(res);
                 res.data = res.data.sort((item1, item2) => item1.updatedAt < item2.updatedAt ? 1 : -1)
                 res.data.forEach(item => {
                     item.friendlyUpdatedAt = friendlyDate(item.updatedAt)
