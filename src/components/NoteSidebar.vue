@@ -9,7 +9,7 @@
                 <el-dropdown-item command="trash">回收站</el-dropdown-item>
             </el-dropdown-menu>
     </el-dropdown>
-    <span class=" btn add-note">添加笔记</span>
+    <span class=" btn add-note" @click="addNote">添加笔记</span>
      <div class="menu">
       <div>更新时间</div>
       <div>标题</div>
@@ -28,9 +28,18 @@
 <script>
 import Notebooks from '@/apis/notebooks'
 import Notes from '@/apis/notes'
+import Bus from '@/helpers/bus'
 
 export default{
+    
     name:'NoteSidebar',
+    data(){
+        return {
+            notebooks:[],
+            notes:[],
+            curBook:{}
+        }
+    },
     created(){
         Notebooks.getAll().then(res=>{
         this.notebooks=res.data
@@ -39,16 +48,12 @@ export default{
         return Notes.getAll({notebookId:this.curBook.id})
         }).then(res=>{
             this.notes=res.data
+            this.$emit('update:notes',this.notes)
+            Bus.$emit('update:notes',this.notes)
+            
         })
     },
 
-    data(){
-        return {
-            notebooks:[],
-            notes:[],
-            curBook:{}
-        }
-    },
     methods:{
         handleCommand(notebookId){
             if(notebookId==='trash'){
@@ -60,6 +65,14 @@ export default{
                     this.notes=res.data
                 })
         },
+        addNote(){
+            Notes.addNote({notebookId:this.curBook.id})
+            .then(res=>{
+                console.log(res)
+                this.notes.unshift(res.data)
+            })
+        }
+
     }
 }
 </script>
