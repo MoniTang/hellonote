@@ -17,7 +17,7 @@
     <ul class="notes">
       <li v-for="note in notes"  :key="note.id"> 
         <router-link :to="`note?notebookId=${curBook.id}&noteId=${note.id}`">
-          <span class="date">{{note.updateAtFriendly}}</span>
+          <span class="date">{{note.updatedAtFriendly}}</span>
           <span class="title">{{note.title}}</span>   
         </router-link>       
       </li>
@@ -37,7 +37,7 @@ export default{
         return {
             notebooks:[],
             notes:[],
-            curBook:{}
+            curBook:[],
         }
     },
     created(){
@@ -68,7 +68,6 @@ export default{
         addNote(){
             Notes.addNote({notebookId:this.curBook.id})
             .then(res=>{
-                console.log(res)
                 this.notes.unshift(res.data)
             })
         }
