@@ -30,7 +30,7 @@ import Notebooks from '@/apis/notebooks'
 import Notes from '@/apis/notes'
 import Bus from '@/helpers/bus'
 
-import{mapGetters,mapState,mapMutations,mapActions} from 'vuex'
+import{mapGetters,mapActions} from 'vuex'
 
 export default{
     
@@ -49,7 +49,9 @@ export default{
     created(){
         this.getNotebooks().then(()=>{
             this.$store.commit('setCurBook',{curBookId:this.$route.query.notebookId})
-            this.getNotes({notebookId:this.curBook.id})
+            return this.getNotes({notebookId:this.curBook.id})
+        }).then(()=>{
+            this.$store.commit('setCurNote',{curNoteId:this.$route.query.noteId})
         })
         // Notebooks.getAll().then(res=>{
         // this.notebooks=res.data
