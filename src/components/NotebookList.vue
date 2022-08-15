@@ -25,9 +25,6 @@
 
 <script>
 import Auth from '@/apis/auth'
-import Notebooks from '@/apis/notebooks'
-import { friendlyDate } from '@/helpers/until'
-
 import {mapState,mapActions,mapGetters} from 'vuex'
 
 export default {
@@ -43,10 +40,6 @@ export default {
       }
     }),
     this.$store.dispatch('getNotebooks')
-
-    // Notebooks.getAll().then(res=>{
-    //   this.notebooks=res.data;
-    // })
   },
  computed: {
     ...mapGetters(['notebooks'])
@@ -71,7 +64,6 @@ export default {
         })
     },
      onEdit(item){
-      let title=''
        this.$prompt('修改笔记本标题', {
           confirmButtonText: '确定',
           cancelButtonText: '取消',
