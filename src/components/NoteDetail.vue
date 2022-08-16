@@ -27,7 +27,6 @@
 </template>
 
 <script>
-import Auth from '@/apis/auth'
 import NoteSidebar from './NoteSidebar.vue';
 import _ from 'lodash'
 import MarkdownIt from 'markdown-it'

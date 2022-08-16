@@ -30,6 +30,7 @@ const actions = {
             })
     },
     checkLogin({ commit }, payload) {
+        if (state.user != null) return Promise.resolve()
         return Auth.getInfo()
             .then(res => {
                 if (!res.isLogin) {
