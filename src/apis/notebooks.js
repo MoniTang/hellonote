@@ -13,7 +13,7 @@ export default {
                 res.data = res.data.sort((item1, item2) => item1.updatedAt < item2.updatedAt ? 1 : -1)
                 res.data.forEach(item => {
                     item.updatedAtFriendly = friendlyDate(item.updatedAt)
-                });
+                })
                 resolve(res)
             }).catch(err => {
                 reject(err)

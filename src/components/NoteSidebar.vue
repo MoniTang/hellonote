@@ -39,7 +39,8 @@ export default{
         ...mapGetters([
             'notebooks',
             'notes',
-            'curBook'
+            'curBook',
+            'curNote',
         ])
     },
     created(){
@@ -48,6 +49,13 @@ export default{
             return this.getNotes({notebookId:this.curBook.id})
         }).then(()=>{
             this.$store.commit('setCurNote',{curNoteId:this.$route.query.noteId})
+                this.$router.replace({
+                path:'/note',
+                query:{
+                    noteId:this.curNote.id,
+                    notebookId:this.curBook.id
+                }
+            })
         })
         // Notebooks.getAll().then(res=>{
         // this.notebooks=res.data
@@ -75,7 +83,17 @@ export default{
                 return this.$router.push({path:'/trash'})
             }
             this.$store.commit('setCurBook',{curBookId:notebookId})
-            this.getNotes({notebookId})
+            this.getNotes({notebookId}).then(()=>{
+                this.$store.commit('setCurNote',{})
+                this.$router.replace({
+                path:'/note',
+                query:{
+                    noteId:this.curNote.id,
+                    notebookId:this.curBook.id
+                }
+            })
+        })
+            
             
 
             // Notes.getAll({notebookId}).then(res=>{
@@ -83,7 +101,16 @@ export default{
             //     })
         },
         onAddNote(){
-            this.addNote({notebookId:this.curBook.id})
+            this.addNote({notebookId:this.curBook.id}).then(()=>{
+                this.$store.commit('setCurNote',{})
+                this.$router.replace({
+                path:'/note',
+                query:{
+                    noteId:this.curNote.id,
+                    notebookId:this.curBook.id
+                }
+            })
+        })
 
             // Notes.addNote({notebookId:this.curBook.id})
             // .then(res=>{
