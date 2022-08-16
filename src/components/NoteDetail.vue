@@ -55,16 +55,13 @@ components: {  NoteSidebar },
         }, 
      },
     created() {
-        Auth.getInfo().then(res => {
-            if (!res.isLogin) {
-                this.$router.push({ path: "/Login" });
-            }
-        });
+     this.checkLogin({path:'/login'})
     },
     methods:{
         ...mapActions([
             'updateNote',
-            'deleteNote'
+            'deleteNote',
+            'checkLogin'
         ]),
         onUpdateNote:_.debounce(function(){
            this.updateNote({noteId:this.curNote.id,title:this.curNote.title,content:this.curNote.content

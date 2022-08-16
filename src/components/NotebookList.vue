@@ -33,12 +33,7 @@ export default {
     return {}
   },
   created(){
-    Auth.getInfo().then(res=>{
-      if(!res.isLogin){
-        this.$router.push({path:'/Login'})
-
-      }
-    }),
+    this.checkLogin({path:'/login'})
     this.$store.dispatch('getNotebooks')
   },
  computed: {
@@ -50,7 +45,8 @@ export default {
       'getNotebooks',
       'addNotebook',
       'updateNotebook',
-      'deleteNotebook'
+      'deleteNotebook',
+      'checkLogin'
     ]),
 
     onCreate(){
