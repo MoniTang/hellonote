@@ -93,5 +93,6 @@ components: {  NoteSidebar },
   background: #fff;
   flex:1;
   align-items: stretch;
+
 }
 </style>
