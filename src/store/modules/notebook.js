@@ -23,6 +23,7 @@ const mutations = {
     updateNotebook(state, payload) {
         let notebook = state.notebooks.find(notebook => notebook.id == payload.notebookId) || {}
         notebook.title = payload.title
+
     },
     deleteNotebook(state, payload) {
         state.notebooks = state.notebooks.filter(notebook => notebook.id != payload.notebookId)
@@ -52,6 +53,7 @@ const actions = {
             .then(res => {
                 commit('updateNotebook', { notebookId: payload.notebookId, title: payload.title })
                 Message.success(res.msg)
+
             })
     },
     deleteNotebook({ commit }, payload) {
