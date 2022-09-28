@@ -35,9 +35,9 @@ span {
   text-align: center;
   line-height: 32px;
   border-radius: 50%;
-  background: #f2b81c;
+  background-image: linear-gradient(to top, #e6e9f0 0%, #eef1f5 100%);
   color: #fff;
-  text-shadow: 1px 0 1px #795c19;
+  text-shadow: 1px 0 1px #c5c3bd;
   font-weight: bold;
   text-transform: uppercase;
   font-size: 18px;

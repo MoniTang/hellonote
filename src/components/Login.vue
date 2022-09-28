@@ -3,7 +3,6 @@
     <div class="modal-mask">
       <div class="modal-wrapper">
         <div class="modal-container">
-          <div class="main"></div>
           <div class="form">
             <h3 @click="showRegister">创建账户</h3>
             <transition name="slide">
@@ -133,31 +132,22 @@ export default {
   transition: opacity .3s ease;
 }
 .modal-wrapper {
-
   display: table-cell;
   vertical-align: middle;
 }
 
 .modal-container {
-  width: 800px;
-  height: 500px;
+  width: 360px;
+  height: 320px;
   margin: 0px auto;
-  background-color: #fff;
+  background-color: #FFF;
   border-radius: 2px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, .33);
   transition: all .3s ease;
   font-family: Helvetica, Arial, sans-serif;
   display: flex;
-
-  .main {
-    flex: 1;
-    background: #36bc64 
-    url(//cloud.hunger-valley.com/17-12-13/38476998.jpg-middle) 
-    center center no-repeat;
-    background-size: contain;
-  }
   .form {
-    width: 270px;
+    width: 360px;
     border-left: 1px solid #ccc;
     overflow: hidden;
     h3 {

@@ -32,7 +32,7 @@ export default{
     position: relative;
     width: 50px;
     text-align: center;
-    background-color: #2c333c;
+    background-color:lightblue;
     .icons{
         margin-top: 15px;
         a{
@@ -40,7 +40,7 @@ export default{
             display: block;
         }
         .router-link-active {
-            background-color: #5e6266;
+            background-color: #74b4c9;
         }
     }
     .logout {
